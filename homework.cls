@@ -333,6 +333,13 @@
 \end{center}
 }
 
+\newcommand{\mychapter}[2]{
+	\setcounter{chapter}{#1}
+	\setcounter{section}{0}
+	\chapter*{#2}
+	\addcontentsline{toc}{chapter}{#2}
+}
+
 \endinput
 
 %%
