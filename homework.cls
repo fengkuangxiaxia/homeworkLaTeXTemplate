@@ -104,6 +104,123 @@
 %% 行距缩放因子
 \linespread{1.3}
 
+%% CTeX Settings
+% 名称：目录、表格索引、插图索引、算法、算法索引、代码
+\CTEXoptions[contentsname={\homework@contentsname\vspace{20 pt}}]
+\CTEXoptions[listfigurename={\homework@listfigurename}]
+\CTEXoptions[listtablename={\homework@listtablename}]
+\floatname{algorithm}{\homework@label@algo}
+\renewcommand{\listalgorithmname}{\homework@listalgorithmname}
+\renewcommand{\lstlistingname}{\homework@value@listingname}
+% Title Settings at the chapter Level
+\CTEXsetup[nameformat={\Large\bfseries\zihao{3}}]{chapter}
+\CTEXsetup[titleformat={\Large\bfseries}]{chapter}
+\CTEXsetup[beforeskip={15\p@}]{chapter}
+\CTEXsetup[afterskip={25\p@}]{chapter}
+% Title Settings at the section Level
+\CTEXsetup[format={\large\heiti\zihao{4}}]{section}
+\CTEXsetup[indent={0\ccwd}]{section}
+\CTEXsetup[beforeskip={-3ex \@plus -1ex \@minus -.2ex}]{section}
+\CTEXsetup[afterskip={1.0ex \@plus .2ex}]{section}
+% Title Settings at the subection Level
+\CTEXsetup[format={\songti\zihao{-4}}]{subsection}
+\CTEXsetup[indent={0\ccwd}]{subsection}
+\CTEXsetup[beforeskip={-2.5ex \@plus -1ex \@minus -.2ex}]{subsection}
+\CTEXsetup[afterskip={1.0ex \@plus .2ex}]{subsection}
+% Title Settings at the subsubection Level
+\CTEXsetup[format={\normalfont\normalsize}]{subsubsection}
+\CTEXsetup[indent={0\ccwd}]{subsubsection}
+\CTEXsetup[beforeskip={-2ex \@plus -1ex \@minus -.2ex}]{subsubsection}
+\CTEXsetup[afterskip={1.0ex \@plus .2ex}]{subsubsection}
+
+\renewcommand{\theenumi}{\arabic{enumi}}
+\renewcommand{\labelenumi}{(\theenumi)}
+
+% bullets in the item
+\renewcommand{\labelitemi}{\ensuremath{\bullet}}
+
+%% Graphic path & file extension
+\graphicspath{{fig/}{figure/}{figures/}{logo/}{logos/}{graph/}{graphs}}
+\DeclareGraphicsExtensions{.pdf,.eps,.png,.jpg,.jpeg}
+
+% Caption setting in ccaption pacakge
+\captiondelim{\ }
+\captionnamefont{\kaishu\small}
+\captiontitlefont{\kaishu\small}
+
+% Floating parameters
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.65}
+\renewcommand{\floatpagefraction}{0.60}
+
+% 定公式、图、表、算法的编号为"3-1"的形式，即分隔符由.变为短杠
+\renewcommand{\theequation}{\arabic{chapter}--\arabic{equation}}
+\renewcommand{\thefigure}{\arabic{chapter}--\arabic{figure}}
+\renewcommand{\thetable}{\arabic{chapter}--\arabic{table}}
+\renewcommand{\thealgorithm}{\arabic{chapter}--\arabic{algorithm}}
+
+% Setting Package listings/lstlistings
+\lstset{tabsize=4, %
+	frame=shadowbox, %把代码用带有阴影的框圈起来
+	commentstyle=\color{red!50!green!50!blue!50},%浅灰色的注释
+	rulesepcolor=\color{red!20!green!20!blue!20},%代码块边框为淡青色
+	keywordstyle=\color{blue!90}\bfseries, %代码关键字的颜色为蓝色，粗体
+	showstringspaces=false,%不显示代码字符串中间的空格标记
+	stringstyle=\ttfamily, % 代码字符串的特殊格式
+	keepspaces=true, %
+	breakindent=22pt, %
+	numbers=left,%左侧显示行号
+	stepnumber=1,%
+	numberstyle=\tiny, %行号字体用小号
+	basicstyle=\footnotesize, %
+	showspaces=false, %
+	flexiblecolumns=true, %
+	breaklines=true, %对过长的代码自动换行
+	breakautoindent=true,%
+	breakindent=4em, %
+	aboveskip=1em, %代码块边框
+	%% added by http://bbs.ctex.org/viewthread.php?tid=53451
+	fontadjust,
+	captionpos=t,
+	framextopmargin=2pt,framexbottommargin=2pt,abovecaptionskip=-3pt,belowcaptionskip=3pt,
+	xleftmargin=4em,xrightmargin=4em, % 设定listing左右的空白
+	texcl=true,
+	% 设定中文冲突，断行，列模式，数学环境输入，listing数字的样式
+	extendedchars=false,columns=flexible,mathescape=true
+	numbersep=-1em
+}
+
+% 定理环境
+\theoremstyle{plain}
+\newtheorem{algo}{\homework@label@algo~}[chapter]
+\newtheorem{thm}{\homework@label@thm~}[chapter]
+\newtheorem{lem}[thm]{\homework@label@lem~}
+\newtheorem{prop}[thm]{\homework@label@prop~}
+\newtheorem{cor}[thm]{\homework@label@cor~}
+\theoremstyle{definition}
+\newtheorem{defn}{\homework@label@defn~}[chapter]
+\newtheorem{conj}{\homework@label@conj~}[chapter]
+\newtheorem{exmp}{\homework@label@exmp~}[chapter]
+\newtheorem{rem}{\homework@label@rem~}
+\newtheorem{case}{\homework@label@case~}
+\theoremstyle{break}
+\newtheorem{bthm}[thm]{\homework@label@thm~}
+\newtheorem{blem}[thm]{\homework@label@lem~}
+\newtheorem{bprop}[thm]{\homework@label@prop~}
+\newtheorem{bcor}[thm]{\homework@label@cor~}
+\renewcommand{\proofname}{\bf\homework@label@proof}
+\newtheoremstyle{break}% name
+{}%      Space above, empty = `usual value'
+{}%      Space below
+{\itshape}% Body font
+{}%         Indent amount (empty = no indent, \parindent = para indent)
+{\bfseries}% Thm head font
+{.}%        Punctuation after thm head
+{\newline}% Space after thm head: \newline = linebreak
+{}%         Thm head spec
+
+
 %==========
 % Segment 4. Draw the homework
 %==========
@@ -134,15 +251,15 @@
 			\includegraphics[angle=0,origin=br,width=4cm]{sjtubadge.png}
 		\end{figure}
 		\vskip 20pt
-		\begin{tabular}{ll}
-			\huge{\kaishu{作业题目}} &\kaishu
-			\underline{\makebox[350pt]{\homework@value@title}}
-		\end{tabular}
+
 		\vskip 45pt
 		{\fangsong\zihao{4}}
 		\def\tabcolsep{1pt}
 		\def\arraystretch{1}
 		\begin{tabular}{lc}  
+			\kaishu{\homework@label@title} &\kaishu
+			\underline{\makebox[250pt]{\homework@value@title}}
+			\\
 			\kaishu{\homework@label@course} &\kaishu
 			\underline{\makebox[250pt]{\homework@value@course}}
 			\\
@@ -172,3 +289,30 @@
 	\cleardoublepage
 	\fi
 }
+
+% fancyhdr页眉页脚设置
+\fancypagestyle{blank}{
+	\fancyhf{}
+	\fancyhead[L]{\includegraphics[width=0.22\textwidth]{sjtubanner}}
+	\fancyhead[R]{\nouppercase{\small\kaishu\homework@value@titlemark}}
+	\fancyfoot[C]{}
+}
+%% 正文页眉页脚
+\fancypagestyle{main}{
+	\fancyhf{}
+	\fancyhead[L]{\includegraphics[width=0.22\textwidth]{sjtubanner}}
+	\fancyhead[R]{\nouppercase{\small\kaishu\homework@value@titlemark}}
+	\fancyfoot[C]{\small 第~{\bfseries\thepage}~页\,共~{\bfseries\pageref{LastPage}}~页}
+}
+%% 开章页页眉页脚
+\fancypagestyle{plain}{% 设置开章页页眉页脚风格(只有页码作为页脚)
+	\fancyhf{}%
+	\fancyhead[L]{\nouppercase{\small\kaishu\includegraphics[width=0.22\textwidth]{sjtubanner}}}
+	\fancyhead[R]{\nouppercase{\small\kaishu\homework@value@titlemark}}
+	\fancyfoot[C]{\small 第~{\bf\thepage}~页\,共~{\bf\pageref{LastPage}}~页}
+}
+
+\endinput
+
+%%
+%% End of file `homework.cls'.
